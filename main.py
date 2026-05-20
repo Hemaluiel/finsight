@@ -113,5 +113,7 @@ def health():
 # Serve frontend 
 @app.get("/")
 async def serve_index():
-    with open("/app/index.html", "r") as f:
+    # with open("/app/index.html", "r") as f:
+    with open("index.html", "r") as f:
         return HTMLResponse(content=f.read())
+    
