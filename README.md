@@ -3,17 +3,13 @@
 A full-stack web app to analyze bank statements with AI.
 **Stack:** Python + FastAPI (backend) · HTML/CSS/JS (frontend) · SQLite (database) · Claude AI
 
----
 
 ## Features
 
 - **PDF parsing** — pdfplumber extracts text from digital PDFs (not scanned)
 - **AI analysis** — Claude categorizes debits, finds top 5, writes insights
 - **Dashboard** — doughnut chart, horizontal bar chart, metric cards, top 5 list
-- **History** — every analysis is saved; click to reload any past result
-- **Deploy-anywhere** — single Python file backend, no complex infra needed
 
----
 
 ## Notes
 
