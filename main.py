@@ -75,11 +75,12 @@ Use the following keyword-based rules to assign each transaction to the correct 
 13. Personal Care    — salon, hair, spa, cream, shampoo, cosmetic, beauty, grooming, parlour, lotion, deodorant, perfume
 14. Contributions & Donations — semso, charity, contribution, donation, rest in peace, rip, fundraiser, relief, temple, church, mosque, offering, zakat
 15. Gifts & Celebrations — birthday, gift, celebration, party, marriage, wedding, anniversary, present, function, feast, festival, diwali, christmas, new year, eid, raksha bandhan, valentine's day, mother's day, father's day, greeting card, flowers, cake, gift shop
-16. Family & Friends — friend, relative, family, brother, sister, mother, father, parent, cousin, spouse, wife, husband, sent to, transferred to, fundtransfer, provides name of a person
+16. Family & Friends — friend, relative, family, brother, sister, mother, father, parent, cousin, spouse, wife, husband, son, daughter, uncle, aunt, in-law, roommate, partner, buddy, bestie, colleague, neighbor
 17. ATM & Cash       — atm, cash withdrawal, cash, teller
 18. Insurance        — insurance, lic, policy, premium, cover, insure
-19. Investments      — mutual fund, sip, stock, share, investment, fd, fixed deposit, rd, recurring deposit, nps, ppf, gold bond
+19. Investments      — mutual fund, sip, stock, share, investment, fd, fixed deposit, rd, recurring deposit, nps, ppf, gold bond, DK Gold, silver bond, demat, portfolio, capital gain, dividend
 20. Loan and Payments     — loan, emi, mortgage, repayment, interest, principal, credit card payment
+21. Fund transers       — transfer, fund transfer, sent to, transferred to, received from, payment to,  provides name of a person or entity without any of the above keywords, intrabank transfer, interbank transfer, provider includes bank names like BoB, BNB, BDBL, DK, SBI, HDFC, ICICI, PNB, Axis, Yes Bank, IDFC, Kotak, Union Bank, Canara Bank, etc.
 21. Others           — anything that does not match the above categories
 
 Return ONLY valid JSON, no markdown, no extra text:
