@@ -58,7 +58,29 @@ async def analyze(file: UploadFile = File(...)):
     # Groq AI analysis 
     prompt = f"""You are an expert bank statement analyzer. Analyze the following bank statement and identify ALL debit/expense transactions.
 
-Categorize them into groups such as: Food & Dining, Groceries, Transport, Utilities, Shopping, Entertainment, Healthcare, Education, Rent/Housing, Insurance, Subscriptions, ATM Withdrawals, Transfers, Fuel, Travel, Other.
+Use the following keyword-based rules to assign each transaction to the correct category. Read each transaction description carefully and match it to the FIRST category whose keywords appear in the description (case-insensitive):
+
+1. Groceries         — vegetable, grocery, groceries, market, supermarket, departmental, provisions, sabzi, mandi, bazaar, kirana, food, milk, dairy, fruits, vegetables, meat, fish, poultry
+2. Dining & Food     — restaurant, meal, food, snack, dinner, dining, drink, cafe, canteen, lunch, breakfast, bakery, pizza, burger, biryani, sweets, tea stall, dhaba, juice, coffee, bar, pub, alcohol, beverage
+3. Transport         — taxi, cab, bus, auto, rickshaw, fuel, petrol, diesel, parking, toll, uber, ola, train, metro, fare, transportation
+4. Shopping          — shop, store, mall, boutique, clothing, garments, shoes, fashion, apparel, amazon, flipkart, online order, purchase, ecommerce, retail, electronics, gadget, furniture, home decor, accessories
+5. Bills & Utilities — electricity, water, bill, utility, internet, broadband, wifi, gas, lpg, pipeline, sewage, municipal
+6. Rent              — rent, house rent, apartment, flat, room rent, monthly rent, accommodation
+7. Health & Medical  — hospital, medical, pharmacy, medicine, clinic, doctor, health, diagnostic, lab, nursing, dental, chemist
+8. Education         — school, college, university, tuition, fee, course, coaching, library, books, stationery, education, learning, training, workshop, seminar, online class, certification, pencil, notebook, pen, eraser, bag
+9. Entertainment     — movie, cinema, game, netflix, spotify, youtube, prime, hotstar, concert, show, event, amusement, fun, recreation, leisure, hobby, music, sports, gym, fitness, dance class, art class, streaming, ticket
+10. Subscriptions    — subscription, monthly plan, annual plan, membership, renewal, saas
+11. Mobile & Data    — mobile, data, recharge, talk time, sim, prepaid, postpaid, topup, e-load, eight digit numbers starting with 17, 16, 77 (often bill/mobile numbers), provider names like "Airtel", "TashiCell", "BT"
+12. Travel           — flight, hotel, resort, travel, trip, tour, booking, airbnb, oyo, holiday, vacation, railway, irctc
+13. Personal Care    — salon, hair, spa, cream, shampoo, cosmetic, beauty, grooming, parlour, lotion, deodorant, perfume
+14. Contributions & Donations — semso, charity, contribution, donation, rest in peace, rip, fundraiser, relief, temple, church, mosque, offering, zakat
+15. Gifts & Celebrations — birthday, gift, celebration, party, marriage, wedding, anniversary, present, function, feast, festival, diwali, christmas, new year, eid, raksha bandhan, valentine's day, mother's day, father's day, greeting card, flowers, cake, gift shop
+16. Family & Friends — friend, relative, family, brother, sister, mother, father, parent, cousin, spouse, wife, husband, sent to, transferred to, fundtransfer, provides name of a person
+17. ATM & Cash       — atm, cash withdrawal, cash, teller
+18. Insurance        — insurance, lic, policy, premium, cover, insure
+19. Investments      — mutual fund, sip, stock, share, investment, fd, fixed deposit, rd, recurring deposit, nps, ppf, gold bond
+20. Loan and Payments     — loan, emi, mortgage, repayment, interest, principal, credit card payment
+21. Others           — anything that does not match the above categories
 
 Return ONLY valid JSON, no markdown, no extra text:
 {{
@@ -78,6 +100,7 @@ Return ONLY valid JSON, no markdown, no extra text:
 }}
 
 Rules:
+- Apply keyword rules strictly — do not guess or use generic labels when a keyword matches
 - Sort categories by amount descending
 - Top 5 = 5 largest individual debit transactions
 - Only include categories with amount > 0
@@ -116,4 +139,3 @@ async def serve_index():
     # with open("/app/index.html", "r") as f:
     with open("index.html", "r") as f:
         return HTMLResponse(content=f.read())
-    
