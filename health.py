@@ -1,7 +1,3 @@
-"""
-Health check — Netlify Serverless Function
-Replaces the FastAPI /api/health endpoint.
-"""
 
 import json
 from datetime import datetime
