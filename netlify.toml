@@ -1,0 +1,24 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Redirect /api/analyze → Netlify function
+[[redirects]]
+  from = "/api/analyze"
+  to = "/.netlify/functions/analyze"
+  status = 200
+
+# Redirect /api/health → Netlify function
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+
+[functions]
+  # Give functions up to 26s (requires Netlify Pro; free tier is capped at 10s)
+  node_bundler = "esbuild"
+
+[dev]
+  functions = "netlify/functions"
+  publish = "."
+  port = 8888
